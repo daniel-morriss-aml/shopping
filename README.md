@@ -1,6 +1,6 @@
 # Shopping List App
 
-A full-stack shopping list application built with Angular v21 (frontend) and .NET (backend).
+A full-stack shopping list application built with Angular and .NET
 
 ## Project Structure
 
@@ -12,9 +12,9 @@ shopping/
 
 ## Prerequisites
 
-- Node.js 20+
-- npm 10+
-- .NET 10 SDK
+-   Node.js 20+
+-   npm 10+
+-   .NET 8 SDK
 
 ## Getting Started
 
@@ -41,13 +41,13 @@ The API will run at `http://localhost:5000` (or the port specified in launchSett
 
 ### Frontend Commands
 
-- `npm start` - Start development server
-- `npm run build` - Build for production
-- `npm test` - Run unit tests
-- `npm run lint` - Run linting
+-   `npm start` - Start development server
+-   `npm run build` - Build for production
+-   `npm test` - Run unit tests
+-   `npm run lint` - Run linting
 
 ### Backend Commands
 
-- `dotnet run` - Start the API
-- `dotnet build` - Build the project
-- `dotnet test` - Run unit tests
+-   `dotnet run` - Start the API
+-   `dotnet build` - Build the project
+-   `dotnet test` - Run unit tests
