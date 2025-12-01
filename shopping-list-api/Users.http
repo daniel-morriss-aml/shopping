@@ -1,0 +1,50 @@
+### Get all users
+GET http://localhost:5162/api/users
+
+###
+
+### Create user 1
+POST http://localhost:5162/api/users
+Content-Type: application/json
+
+{
+  "email": "daniel@example.com",
+  "password": "password123",
+  "name": "Daniel",
+  "isAdmin": true
+}
+
+###
+
+### Create user 2
+POST http://localhost:5162/api/users
+Content-Type: application/json
+
+{
+  "email": "wife@example.com",
+  "password": "password123",
+  "name": "Wife",
+  "isAdmin": false
+}
+
+###
+
+### Get user by ID
+GET http://localhost:5162/api/users/1
+
+###
+
+### Update user
+PUT http://localhost:5162/api/users/1
+Content-Type: application/json
+
+{
+  "email": "daniel.updated@example.com",
+  "name": "Daniel Updated",
+  "isAdmin": true
+}
+
+###
+
+### Delete user
+DELETE http://localhost:5162/api/users/1

@@ -1,0 +1,56 @@
+### Get all items for a shopping list
+GET http://localhost:5162/api/shopping-lists/1/items
+
+###
+
+### Create shopping list item (make sure shopping list 1, category 1, and user 1 exist)
+POST http://localhost:5162/api/shopping-list-items
+Content-Type: application/json
+
+{
+  "shoppingListId": 1,
+  "categoryId": 1,
+  "name": "Apples",
+  "quantity": "6",
+  "addedBy": 1,
+  "order": 1
+}
+
+###
+
+### Create another item
+POST http://localhost:5162/api/shopping-list-items
+Content-Type: application/json
+
+{
+  "shoppingListId": 1,
+  "categoryId": 2,
+  "name": "Milk",
+  "quantity": "2 liters",
+  "addedBy": 1,
+  "order": 2
+}
+
+###
+
+### Get item by ID
+GET http://localhost:5162/api/shopping-list-items/1
+
+###
+
+### Update item (mark as checked)
+PUT http://localhost:5162/api/shopping-list-items/1
+Content-Type: application/json
+
+{
+  "categoryId": 1,
+  "name": "Apples",
+  "quantity": "6",
+  "isChecked": true,
+  "order": 1
+}
+
+###
+
+### Delete item
+DELETE http://localhost:5162/api/shopping-list-items/1

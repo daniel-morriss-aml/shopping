@@ -1,0 +1,34 @@
+### Get all shopping lists
+GET http://localhost:5162/api/shopping-lists
+
+###
+
+### Create shopping list (make sure users with IDs 1 and 2 exist first)
+POST http://localhost:5162/api/shopping-lists
+Content-Type: application/json
+
+{
+  "name": "Weekly Shopping",
+  "sharedWithUserIds": [1, 2]
+}
+
+###
+
+### Get shopping list by ID
+GET http://localhost:5162/api/shopping-lists/1
+
+###
+
+### Update shopping list
+PUT http://localhost:5162/api/shopping-lists/1
+Content-Type: application/json
+
+{
+  "name": "Weekly Shopping - Updated",
+  "sharedWithUserIds": [1, 2]
+}
+
+###
+
+### Delete shopping list
+DELETE http://localhost:5162/api/shopping-lists/1
