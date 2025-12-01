@@ -1,0 +1,17 @@
+# Frontend (Angular)
+shopping-list-fe/node_modules/
+shopping-list-fe/dist/
+shopping-list-fe/.angular/
+
+# Backend (.NET)
+shopping-list-api/bin/
+shopping-list-api/obj/
+
+# IDE
+.vs/
+*.user
+*.suo
+
+# OS
+.DS_Store
+Thumbs.db
