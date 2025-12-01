@@ -1,0 +1,56 @@
+### Get all categories
+GET http://localhost:5162/api/categories
+
+###
+
+### Create a category - Produce
+POST http://localhost:5162/api/categories
+Content-Type: application/json
+
+{
+  "name": "Produce",
+  "order": 1
+}
+
+###
+
+### Create a category - Dairy
+POST http://localhost:5162/api/categories
+Content-Type: application/json
+
+{
+  "name": "Dairy",
+  "order": 2
+}
+
+###
+
+### Create a category - Meat
+POST http://localhost:5162/api/categories
+Content-Type: application/json
+
+{
+  "name": "Meat",
+  "order": 3
+}
+
+###
+
+### Get category by ID (change ID as needed)
+GET http://localhost:5162/api/categories/1
+
+###
+
+### Update a category (change ID as needed)
+PUT http://localhost:5162/api/categories/1
+Content-Type: application/json
+
+{
+  "name": "Fresh Produce",
+  "order": 1
+}
+
+###
+
+### Delete a category (change ID as needed)
+DELETE http://localhost:5162/api/categories/1
