@@ -1,0 +1,89 @@
+<div class="min-h-screen bg-gray-50 py-8 px-4">
+    <div class="max-w-2xl mx-auto">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h1 class="text-2xl font-bold text-gray-900 mb-6">Create New Shopping List</h1>
+
+            @if (error) {
+            <div class="mb-4 p-4 bg-red-50 border border-red-200 rounded-md">
+                <p class="text-red-800">{{ error }}</p>
+            </div>
+            }
+
+            <form (ngSubmit)="onSubmit()" class="space-y-6">
+                <!-- List Name -->
+                <div>
+                    <label for="listName" class="block text-sm font-medium text-gray-700 mb-2">
+                        List Name
+                    </label>
+                    <input
+                        id="listName"
+                        type="text"
+                        [(ngModel)]="listName"
+                        name="listName"
+                        placeholder="e.g., Weekly Shopping"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                        [disabled]="loading"
+                        required
+                    />
+                </div>
+
+                <!-- Share With Users -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Share with Users
+                    </label>
+                    @if (availableUsers.length === 0) {
+                    <p class="text-gray-500 text-sm">Loading users...</p>
+                    } @else {
+                    <div
+                        class="space-y-2 border border-gray-300 rounded-md p-4 max-h-60 overflow-y-auto"
+                    >
+                        @for (user of availableUsers; track user.id) {
+                        <label
+                            class="flex items-center p-2 hover:bg-gray-50 rounded cursor-pointer"
+                        >
+                            <input
+                                type="checkbox"
+                                [checked]="isUserSelected(user.id)"
+                                (change)="toggleUser(user.id)"
+                                [disabled]="loading"
+                                class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                            />
+                            <span class="ml-3 text-gray-900">{{ user.name }}</span>
+                            <span class="ml-2 text-sm text-gray-500">({{ user.email }})</span>
+                        </label>
+                        }
+                    </div>
+                    } @if (selectedUserIds.length > 0) {
+                    <p class="mt-2 text-sm text-gray-600">
+                        {{ selectedUserIds.length }} user(s) selected
+                    </p>
+                    }
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex gap-4 pt-4">
+                    <button
+                        type="submit"
+                        [disabled]="loading || !listName.trim() || selectedUserIds.length === 0"
+                        class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed font-medium transition-colors"
+                    >
+                        @if (loading) {
+                        <span>Creating...</span>
+                        } @else {
+                        <span>Create List</span>
+                        }
+                    </button>
+                    <button
+                        type="button"
+                        (click)="cancel()"
+                        [disabled]="loading"
+                        class="flex-1 bg-gray-200 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-300 disabled:cursor-not-allowed font-medium transition-colors"
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
