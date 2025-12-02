@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateShoppingListDto, ShoppingList } from '../models/models';
+import { CreateShoppingListDto, ShoppingList, UpdateShoppingListDto } from '../models/models';
 
 @Injectable({
     providedIn: 'root',
@@ -23,7 +23,7 @@ export class ShoppingListService {
         return this.http.post<ShoppingList>(this.apiUrl, dto);
     }
 
-    updateList(id: number, dto: CreateShoppingListDto): Observable<ShoppingList> {
+    updateList(id: number, dto: UpdateShoppingListDto): Observable<ShoppingList> {
         return this.http.put<ShoppingList>(`${this.apiUrl}/${id}`, dto);
     }
 
