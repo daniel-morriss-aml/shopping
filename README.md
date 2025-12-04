@@ -62,29 +62,88 @@ The application uses SQLite with Entity Framework Core and includes:
 
 ## Getting Started
 
-### Frontend (Angular)
+### Backend (.NET) - Start First
+
+**Important:** The backend must be started before the frontend to ensure the API is available.
+
+1. Navigate to the backend directory:
+
+```bash
+cd shopping-list-api
+```
+
+2. Build the project (first time or after code changes):
+
+```bash
+dotnet build
+```
+
+3. Run the API:
+
+```bash
+dotnet run
+```
+
+The API will start at `http://localhost:5162`.
+
+**Verify it's running:**
+
+-   Open `http://localhost:5162/swagger` in your browser
+-   You should see the Swagger API documentation
+
+### Frontend (Angular) - Start After Backend
+
+1. Open a new terminal and navigate to the frontend directory:
 
 ```bash
 cd shopping-list-fe
+```
+
+2. Install dependencies (first time only):
+
+```bash
 npm install
+```
+
+3. Start the development server:
+
+```bash
 npm start
 ```
 
 The Angular app will run at `http://localhost:4200`.
 
-### Backend (.NET)
+**Note:** The frontend will make API calls to `http://localhost:5162`, so ensure the backend is running.
 
-```bash
-cd shopping-list-api
-dotnet run
-```
-
-The API will run at `http://localhost:5162`.
-
-**Testing the API:**
+### Testing the API
 
 -   Swagger UI: `http://localhost:5162/swagger`
--   Test files: Use the `.http` files in `shopping-list-api/` folder
+-   Test files: Use the `.http` files in `shopping-list-api/` folder (requires VS Code REST Client extension)
+
+### Creating Initial Data
+
+Before using the app, you need to create users. Use one of these methods:
+
+**Option 1: Using PowerShell**
+
+```powershell
+# Create first user
+Invoke-RestMethod -Uri http://localhost:5162/api/users -Method Post -ContentType "application/json" -Body '{"email":"you@example.com","password":"password123","name":"Your Name","isAdmin":true}'
+
+# Create second user
+Invoke-RestMethod -Uri http://localhost:5162/api/users -Method Post -ContentType "application/json" -Body '{"email":"partner@example.com","password":"password123","name":"Partner Name","isAdmin":false}'
+```
+
+**Option 2: Using Swagger UI**
+
+-   Navigate to `http://localhost:5162/swagger`
+-   Find POST `/api/users` endpoint
+-   Click "Try it out" and fill in the user details
+
+**Option 3: Using .http files**
+
+-   Open `shopping-list-api/Users.http` in VS Code
+-   Click "Send Request" above the POST requests
 
 ## Development
 
